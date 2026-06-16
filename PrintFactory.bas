@@ -20,7 +20,7 @@ Sub PrintFactory()
     Set sr = pOriginal.Shapes.All
 
     If sr.Count = 0 Then
-        MsgBox "Não há objetos nesta página para distribuir."
+        MsgBox "Nao ha objetos nesta pagina para distribuir."
         GoTo Finalizar
         Exit Sub
     End If

@@ -1,3 +1,4 @@
+Attribute VB_Name = "Agrupar_Tudo"
 Sub Agrupar()
     Dim p As page
     Dim srFiltro As ShapeRange

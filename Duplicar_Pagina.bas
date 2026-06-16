@@ -1,4 +1,3 @@
-Attribute VB_Name = "Duplicar_Pagina"
 Sub Duplicar()
     Dim i As Integer
     Dim pOriginal As page
@@ -6,7 +5,7 @@ Sub Duplicar()
     Dim sr As ShapeRange, srCopia As ShapeRange
     
     Optimization = True
-    ActiveDocument.BeginCommandGroup "Duplicar Página"
+    ActiveDocument.BeginCommandGroup "Duplicar Pï¿½gina"
     
     Set pOriginal = ActiveDocument.Pages(ActivePage.Index)
         
