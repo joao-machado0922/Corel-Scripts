@@ -18,7 +18,7 @@ function ajustarMargem() {
 
         if (sr.count > 0) {
 
-            p.setSize(p.shapes.all().sizeWidth, p.shapes.all().sizeHeight);
+            p.setSize(p.shapes.all().sizeWidth - 4, p.shapes.all().sizeHeight - 4);
 
             sr.centerX = p.centerX;
             sr.centerY = p.centerY;

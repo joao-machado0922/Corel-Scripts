@@ -1,5 +1,4 @@
 function agruparTudo() {
-
     let doc = host.activeDocument;
 
     if (!doc) {
@@ -8,24 +7,29 @@ function agruparTudo() {
     }
 
     doc.beginCommandGroup("Agrupar");
-
     host.optimization = false;
 
     let paginas = doc.pages;
 
     for (let i = 1; i <= paginas.count; i++) {
-        paginas[i].activate;
+        let p = paginas.item(i);
+        p.activate();
 
-        let shapes = [];
+        let srFiltro = host.createShapeRange();
+        
+        let todosShapes = p.shapes.all();
 
-        for (s in paginas[i].shapes.all()) {
-            shapes.push(s);
+        for (let j = 1; j <= todosShapes.count; j++) {
+            let s = todosShapes.item(j);
+
+            if (s.type !== 11 && s.locked === false) {
+                srFiltro.add(s);
+            }
         }
 
-        if (shapes.length > 1) {
-            shapes.group();
+        if (srFiltro.count > 1) {
+            srFiltro.group();
         }
-
     }
 
     doc.pages.item(1).activate();
@@ -35,6 +39,7 @@ function agruparTudo() {
     if (host.activeWindow) {
         host.activeWindow.refresh();
     }
+    
 }
 
-agruparTudo()
+agruparTudo();

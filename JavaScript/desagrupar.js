@@ -1,6 +1,6 @@
 function desagruparTodasAsPaginas() {
     var doc = host.activeDocument;
-
+    
     if (!doc) {
         alert("Nenhum documento aberto!");
         return;
@@ -14,23 +14,25 @@ function desagruparTodasAsPaginas() {
 
     for (var i = 1; i <= paginas.count; i++) {
         var p = paginas.item(i);
-
+        
         p.activate();
 
         var todosShapes = p.shapes.all();
 
         if (todosShapes.count > 0) {
+            // Desagrupa os objetos
             todosShapes.ungroup();
         }
     }
-
     doc.pages.item(1).activate();
 
     doc.endCommandGroup();
-
+    
     if (host.activeWindow) {
         host.activeWindow.refresh();
     }
+
+    alert("Todas as páginas foram desagrupadas com sucesso!");
 }
 
 desagruparTodasAsPaginas();

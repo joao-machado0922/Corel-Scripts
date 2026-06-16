@@ -1,4 +1,5 @@
-function deletarPagina() {
+function powerClipFaca() {
+
     let doc = host.activeDocument;
 
     if (!doc) {
@@ -6,18 +7,19 @@ function deletarPagina() {
         return;
     }
 
-    doc.beginCommandGroup("Deletar páginas");
+    doc.beginCommandGroup("Colar Faca");
     host.optimization = true;
-    
-    let paginaAtual = doc.activePage.index;
+
     let paginas = doc.pages;
-    
-    for (let i = paginas.count; i >= 1; i--) {
-        if (i != paginaAtual) {
-            paginas.item(i).delete();
+
+    for (let i = 1; i <= paginas.count; i++) {
+        let p = paginas.item(i);
+
+        if (p.shapes.count === 2) {
+            p.shapes.item(2).addToPowerClip(p.shapes.item(1));
         }
     }
-    
+
     host.optimization = false;
     doc.endCommandGroup();
 
@@ -27,4 +29,4 @@ function deletarPagina() {
 
 }
 
-deletarPagina();
+powerClipFaca()
